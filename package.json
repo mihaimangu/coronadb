@@ -1,0 +1,29 @@
+{
+  "name": "coronadb",
+  "version": "0.1.0",
+  "description": "A database for crawling coronavirus data for various countries/places/regions",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mihaimangu/coronadb.git"
+  },
+  "keywords": [
+    "coronavirus",
+    "nodejs",
+    "database",
+    "crawling"
+  ],
+  "author": "Mihai Mangu",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mihaimangu/coronadb/issues"
+  },
+  "homepage": "https://github.com/mihaimangu/coronadb#readme",
+  "dependencies": {
+    "axios": "^0.19.2",
+    "mongoose": "^5.9.5"
+  }
+}
