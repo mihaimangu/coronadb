@@ -5,7 +5,7 @@ var app = express();
 // const db = require('./database');
 const path = require('path');
 
-var port = 8000;
+var port = 80;
 
 app.listen(port, function() {
     console.log('app started');
@@ -13,5 +13,5 @@ app.listen(port, function() {
   
 
 app.get('/', function(request, response){
-    response.sendFile(path.join(__dirname + '/index.html'));
+    response.sendFile(path.join(__dirname + '/x.html'));
 });
