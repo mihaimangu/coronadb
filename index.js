@@ -5,7 +5,7 @@ var app = express();
 // const db = require('./database');
 const path = require('path');
 
-var port = 8000;
+var port = 60000;
 
 app.listen(port, function() {
     console.log('app started');
