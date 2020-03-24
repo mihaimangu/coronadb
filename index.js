@@ -22,11 +22,11 @@ const getOneCounty = () =>{
     const one = Counties.find().sort({confirmed: -1}).limit(1).exec().then(data => console.log(data));
 };
 
-app.get('/', function(request, response){
+app.get('/aggregate', function(request, response){
 
     // getOneCounty();
 
-    Counties.find().sort({confirmed: -1}).limit(5).exec().then(counties => {
+    Counties.find().sort({deaths: 1, confirmed: -1}).limit(50).exec().then(counties => {
         console.log('found data for counties', counties);
         response.render(path.join(__dirname + '/x.ejs'), {
             counties: counties
@@ -38,7 +38,36 @@ app.get('/', function(request, response){
     //     counties: counties
     // });
 
- 
+    
+});
+
+app.get('/', function(request, response){
+
+    // getOneCounty();
+    
+    response.render(path.join(__dirname + '/aggregate.ejs'), {
+        counties: []
+    });
+
+    // Counties.aggregate(
+    //     [{
+    //         $group:{
+    //             _id:null, 
+    //             totalConfirmed: { $sum: {$multiply: ['$quarantined', 1]} },
+    //             count:{$sum:1}
+    //         }
+    //     }]
+    // ).then(counties => {
+    //     console.log('aggregating all the data', counties);
+    //     response.render(path.join(__dirname + '/aggregate.ejs'), {
+    //         counties: counties
+    //     });
+    // });
+
+    // var counties = [];
+    // response.render(path.join(__dirname + '/x.ejs'), {
+    //     counties: counties
+    // });
 
     
 });
