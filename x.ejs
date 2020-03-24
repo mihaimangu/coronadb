@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=2.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="/style.css" ></link>
+
+</head>
+<body>
+    <p>Hi. This is just a test for the coronavirus app.</p>
+
+    <p>We have data for the following counties in Romania:</p>
+    <% counties.forEach(county => { %>
+        <div class="county--data-wrapper">
+            <h2>County data: <%= county.name %></h2>
+            <div class="county--data-inner-wrapper">
+                <table>
+                    <tbody>
+                        <tr>
+                            <td>Confirmati</td>
+                            <td><%= county.confirmed %></td>
+                        </tr>
+                        <tr>
+                            <td>Izolati</td>
+                            <td><%= county.isolated %></td>
+                        </tr>
+                        <tr>
+                            <td>In carantina</td>
+                            <td><%= county.quarantined %></td>
+                        </tr>
+                        <tr>
+                            <td>Decese</td>
+                            <td><%= county.deaths %></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    <% }); %> 
+</body>
+</html>

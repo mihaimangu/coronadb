@@ -14,9 +14,13 @@ const Countries = require('./models/Countries');
 const Counties = require('./models/Counties');
 
 // const one = Countries.findOne().exec().then(data => console.log(data));
+const getOneCounty = () =>{
+    const one = Counties.find().sort({confirmed: -1}).limit(1).exec().then(data => console.log(data));
+};
 
 
-const getCounties = () => {
+
+const getCountiesFromOutside = () => {
     const params = {
         f: "json",
         where: "1=1",
@@ -31,7 +35,6 @@ const getCounties = () => {
     
     }
     
-    
     //calling axios
     if(true){
         axios({
@@ -45,7 +48,7 @@ const getCounties = () => {
                     if(true){
                         if(feature && feature.attributes){
                             const attributes = feature.attributes;
-                            console.log(attributes)
+                            // console.log(attributes)
 
                             insertCountyIntoDb(attributes);
 
@@ -117,13 +120,23 @@ function insertCountyIntoDb(county){
 
 
 var myArgs = process.argv.slice(2);
-if(myArgs[0] == 'get-counties-from-db'){
+if(myArgs[0] == 'get-one-county-from-db'){
     // console.log('process argv 0 ', myArgs[0])
     // console.log('counties')
+    getOneCounty();
 }
 
 if(myArgs[0] == 'get-counties-from-outside'){
     // console.log('process argv 0 ', myArgs[0])
-    // console.log('counties')
-    getCounties();
+    const period = 1000 * 60 * 30;
+
+    console.log(`getting counties from outside, immediately and on an internval of ${period} seconds`)
+    getCountiesFromOutside();
+    // asdasd 11
+
+    setInterval(() => {
+        getCountiesFromOutside();
+
+    }, period)
 }
+
